@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Futuro Sustentável</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ========== RESET E ESTILOS GERAIS ========== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: #FFF8DE;
+            color: #4B2E2B;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        /* ========== MENU ========== */
+        .menu {
+            background-color: #674636;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .menu ul {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        .menu a {
+            color: #FFF2C6;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            transition: background 0.3s, color 0.3s;
+            border-radius: 20px;
+        }
+
+        .menu a:hover {
+            background-color: #8C5A3C;
+            color: #FFF8DE;
+        }
+
+        /* ========== SEÇÕES ========== */
+        .section {
+            padding: 4rem 1rem;
+            border-bottom: 2px solid #BDDDE4;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        h1, h2, h3 {
+            color: #4B2E2B;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #8CA9FF;
+        }
+
+        h2 {
+            font-size: 2rem;
+            border-left: 8px solid #AAC4F5;
+            padding-left: 1rem;
+        }
+
+        /* ========== BOTÕES ========== */
+        .btn {
+            background-color: #9EC6F3;
+            color: #4B2E2B;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s, background 0.2s;
+            margin: 1rem 0;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            background-color: #8CA9FF;
+            transform: scale(1.05);
+        }
+
+        /* ========== CARDS (MITOS) ========== */
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+
+        .card {
+            background-color: #FFF2C6;
+            border-radius: 15px;
+            padding: 1.5rem;
+            flex: 1 1 250px;
+            box-shadow: 0 5px 15px rgba(103, 70, 54, 0.2);
+            border: 2px solid #AAB396;
+        }
+
+        .card h4 {
+            color: #674636;
+        }
+
+        .verdade {
+            background-color: #BDDDE4;
+            padding: 1rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* ========== TABELA INTERATIVA ========== */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #FFF2C6;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 2rem 0;
+        }
+
+        th, td {
+            padding: 0.8rem;
+            text-align: left;
+            border-bottom: 1px solid #AAB396;
+        }
+
+        th {
+            background-color: #8CA9FF;
+            color: #4B2E2B;
+        }
+
+        /* ========== TRIPÉ DA SUSTENTABILIDADE ========== */
+        .tripe {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+            margin: 3rem 0;
+        }
+
+        .pilar {
+            flex: 1 1 200px;
+            background-color: #AAC4F5;
+            padding: 2rem 1rem;
+            border-radius: 20px;
+            text-align: center;
+            color: #4B2E2B;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .pilar:hover {
+            background-color: #8CA9FF;
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        /* ========== CARDS DE ONGS ========== */
+        .ongs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .ong-card {
+            background-color: #AAB396;
+            color: #FFF8DE;
+            padding: 1rem;
+            border-radius: 10px;
+            flex: 1 1 200px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .ong-card:hover {
+            background-color: #8C5A3C;
+        }
+
+        /* ========== MODAL ========== */
+        .modal {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+        }
+
+        .modal-content {
+            background-color: #FFF8DE;
+            padding: 2rem;
+            border-radius: 20px;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+            color: #4B2E2B;
+        }
+
+        .fechar {
+            position: absolute;
+            top: 10px; right: 20px;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #674636;
+        }
+
+        /* ========== SUBSTITUIÇÃO DAS IMAGENS ========== */
+        .card-imagem {
+            background-color: #FFF2C6;
+            border: 3px dashed #8CA9FF;
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 1rem auto;
+            text-align: center;
+            font-weight: bold;
+            color: #674636;
+            max-width: 500px;
+        }
+
+        .card-imagem p {
+            margin: 0.5rem 0;
+        }
+
+        .card-imagem .data {
+            font-size: 2rem;
+            color: #8CA9FF;
+        }
+
+        .diagrama {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            background-color: #AAC4F5;
+            padding: 2rem;
+            border-radius: 20px;
+            margin: 2rem 0;
+        }
+
+        .diagrama-item {
+            text-align: center;
+            font-weight: bold;
+            background-color: #FFF2C6;
+            padding: 1rem;
+            border-radius: 10px;
+            min-width: 120px;
+        }
+
+        .diagrama-seta {
+            font-size: 2rem;
+            color: #674636;
+        }
+
+        .logo-esso {
+            background-color: #4B2E2B;
+            color: #FFF2C6;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            display: inline-block;
+            font-family: monospace;
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+            margin: 1rem 0;
+        }
+
+        /* ========== RESPONSIVIDADE ========== */
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.5rem; }
+            .menu ul { gap: 0.8rem; }
+            .menu a { padding: 0.3rem 0.8rem; font-size: 0.9rem; }
+            .tripe { flex-direction: column; }
+            .pilar { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <!-- ========== MENU DE NAVEGAÇÃO ========== -->
+    <nav class="menu">
+        <ul>
+            <li><a href="#home">Início</a></li>
+            <li><a href="#desafios">Desafios</a></li>
+            <li><a href="#cenario">Cenário Global</a></li>
+            <li><a href="#equilibrio">Equilíbrio</a></li>
+            <li><a href="#brasil">Brasil</a></li>
+            <li><a href="#frases">Frases</a></li>
+            <li><a href="#jogo">Jogo</a></li>
+        </ul>
+    </nav>
+
+    <!-- ========== SEÇÃO HOME ========== -->
+    <section id="home" class="section home">
+        <div class="container">
+            <h1>Futuro Sustentável:</h1>
+            <h2>O Equilíbrio Necessário entre Produção e Meio Ambiente</h2>
+            
+            <!-- Substituição da imagem dafiny1.png -->
+            <div class="card-imagem">
+                <p>🌍</p>
+                <p style="font-size: 2rem; color: #4B2E2B;">Cuidar da Terra<br>é cuidar da Vida.</p>
+            </div>
+
+            <!-- Substituição da imagem dafiny.png -->
+            <div class="card-imagem">
+                <p style="font-size: 2rem; color: #8CA9FF;">SÓ TEMOS<br>UM PLANETA</p>
+                <p>Pequenas atitudes<br>contam</p>
+                <p class="data">05/06</p>
+            </div>
+
+            <button id="btn-dica" class="btn">Clique para uma dica</button>
+            <p id="dica-mensagem" class="hidden"></p>
+        </div>
+    </section>
+
+    <!-- ========== SEÇÃO DESAFIOS GLOBAIS ========== -->
+    <section id="desafios" class="section desafios">
+        <div class="container">
+            <h2>Desafios globais e o papel estratégico do Brasil</h2>
+            <p>OI PESSOAL, HOJE VOU FALAR SOBRE ALGO QUE A GENTE OUVE TODO DIA, MAS QUE ÀS VEZES PARECE DISTANTE: COMO A GENTE CONTINUA PRODUZINDO O QUE O MUNDO PRECISA SEM DESTRUIR A NOSSA ÚNICA CASA. ACHO QUE AMBOS, PRODUÇÃO E CONSERVAÇÃO, SÃO FUNDAMENTAIS PARA A NOSSA SOCIEDADE SOBREVIVER.</p>
+            
+            <h3>Mitos e verdades sobre práticas sustentáveis</h3>
+            <div class="cards">
+                <div class="card" id="mito1">
+                    <h4>Mito: Sustentabilidade sempre custa caro</h4>
+                    <p class="verdade hidden">Verdade: Práticas sustentáveis trazem economia a longo prazo.</p>
+                    <button class="btn-verdade">Mostrar verdade</button>
+                </div>
+                <div class="card" id="mito2">
+                    <h4>Mito: Reciclagem não é eficaz</h4>
+                    <p class="verdade hidden">Verdade: Reciclagem é crucial quando bem implementada.</p>
+                    <button class="btn-verdade">Mostrar verdade</button>
+                </div>
+                <div class="card" id="mito3">
+                    <h4>Mito: Só grandes empresas são responsáveis</h4>
+                    <p class="verdade hidden">Verdade: Indivíduos também causam grande impacto.</p>
+                    <button class="btn-verdade">Mostrar verdade</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== SEÇÃO CENÁRIO GLOBAL ========== -->
+    <section id="cenario" class="section cenario">
+        <div class="container">
+            <h2>Cenário Global: Onde estamos?</h2>
+            <!-- Tabela baseada na imagem dafiny3.png (já implementada) -->
+            <table id="tabela-emissoes">
+                <thead>
+                    <tr><th>Item</th><th>Emissão (ton CO₂)</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Asteroid</td><td id="val0">0.00</td></tr>
+                    <tr><td>Bacterium</td><td id="val1">0.00</td></tr>
+                    <tr><td>Cattle</td><td id="val2">0.00</td></tr>
+                    <tr><td>Dairy Product</td><td id="val3">0.00</td></tr>
+                    <tr><td>Egg</td><td id="val4">0.00</td></tr>
+                    <tr><td>Fish</td><td id="val5">0.00</td></tr>
+                    <tr><td>Meat</td><td id="val6">0.00</td></tr>
+                    <tr><td>Poultry</td><td id="val7">0.00</td></tr>
+                    <tr><td>Shellfish</td><td id="val8">0.00</td></tr>
+                    <tr><td>Vegetable</td><td id="val9">0.00</td></tr>
+                    <tr><td><strong>Total</strong></td><td id="total">0.00</td></tr>
+                </tbody>
+            </table>
+            <p>Arraste os sliders para simular o impacto:</p>
+            <input type="range" id="slider-pecuaria" min="0" max="100" value="0" step="1"> Pecuária<br>
+            <input type="range" id="slider-agricultura" min="0" max="50" value="0" step="1"> Agricultura<br>
+            <button id="btn-calcular" class="btn">Calcular Pegada</button>
+            <p id="resultado-pegada"></p>
+        </div>
+    </section>
+
+    <!-- ========== SEÇÃO EQUILÍBRIO (TRIPÉ) ========== -->
+    <section id="equilibrio" class="section equilibrio">
+        <div class="container">
+            <h2>Conceito de Equilíbrio: Desenvolvimento Sustentável</h2>
+            
+            <!-- Substituição da imagem dafiny2.png (diagrama) -->
+            <div class="diagrama">
+                <div class="diagrama-item">MEIO AMBIENTE</div>
+                <div class="diagrama-seta">⬇️</div>
+                <div class="diagrama-item">HOMEM</div>
+                <div class="diagrama-seta">🔄</div>
+                <div class="diagrama-item">Sustentabilidade</div>
+                <div class="diagrama-seta">⬆️</div>
+                <div class="diagrama-item">MEIO AMBIENTE</div>
+            </div>
+
+            <blockquote>
+                "A sustentabilidade é o caminho para o futuro que queremos para todos. Ela oferece um mapa para acabar com a pobreza e proteger o planeta." – Ban Ki-moon
+            </blockquote>
+            <div class="tripe">
+                <div class="pilar" id="pilar-ambiental">
+                    <h3>🌿 Ambiental</h3>
+                    <p>Proteção dos ecossistemas, uso racional dos recursos.</p>
+                </div>
+                <div class="pilar" id="pilar-social">
+                    <h3>👥 Social</h3>
+                    <p>Inclusão, bem-estar e justiça para as pessoas.</p>
+                </div>
+                <div class="pilar" id="pilar-economico">
+                    <h3>💰 Econômico</h3>
+                    <p>Prosperidade e eficiência sem esgotar recursos.</p>
+                </div>
+            </div>
+            <h3>Exemplos de ONGs</h3>
+            <div class="ongs">
+                <div class="ong-card" data-info="Instituto Raízes do Futuro: Agroecologia e restauração de solos.">
+                    <h4>Instituto Raízes do Futuro</h4>
+                </div>
+                <div class="ong-card" data-info="Rede Água Viva: Recuperação de nascentes e educação hídrica.">
+                    <h4>Rede Água Viva</h4>
+                </div>
+                <div class="ong-card" data-info="Ciclo Seguro: Economia circular em comunidades.">
+                    <h4>Ciclo Seguro</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== SEÇÃO BRASIL ========== -->
+    <section id="brasil" class="section brasil">
+        <div class="container">
+            <h2>Brasil no olho do furacão</h2>
+            
+            <!-- Substituição da imagem dafiny5.png -->
+            <div class="logo-esso">ESSO SINCE 1853</div>
+
+            <p>O Brasil possui a maior biodiversidade do mundo e o maior potencial agrícola. Segundo a Embrapa, é um dos poucos países que consegue produzir três safras por ano, mas o desafio é fazer isso sem avançar sobre a floresta.</p>
+            <ul class="solucoes">
+                <li><strong>ILPF (Integração Lavoura-Pecuária-Floresta):</strong> sistema que recupera solos e sequestra carbono.</li>
+                <li><strong>Agricultura de precisão:</strong> uso de drones e sensores para otimizar insumos.</li>
+                <li><strong>Bioeconomia na Amazônia:</strong> valorização de produtos nativos como açaí e castanha.</li>
+                <li><strong>Economia circular:</strong> indústrias com lixo zero e reúso de água.</li>
+            </ul>
+            <!-- Vídeo do YouTube -->
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/mJ8nISBlqvE?si=CsZb6bfNe12XTAS0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+    </section>
+
+    <!-- ========== SEÇÃO FRASES ========== -->
+    <section id="frases" class="section frases">
+        <div class="container">
+            <h2>Frases para inspirar</h2>
+            <div id="frase-container">
+                <p id="frase-exibida">"Não temos um Planeta B."</p>
+            </div>
+            <button id="btn-frase" class="btn">Nova frase</button>
+        </div>
+    </section>
+
+    <!-- ========== SEÇÃO JOGO / INTERATIVIDADE ========== -->
+    <section id="jogo" class="section jogo">
+        <div class="container">
+            <h2>Quiz Sustentável</h2>
+            <p>Teste seus conhecimentos:</p>
+            <div id="pergunta"></div>
+            <div id="respostas"></div>
+            <button id="btn-proxima" class="btn">Próxima pergunta</button>
+            <p id="pontuacao"></p>
+        </div>
+    </section>
+
+    <!-- Modal (pop-up) para informações de ONGs -->
+    <div id="modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="fechar">&times;</span>
+            <p id="modal-texto"></p>
+        </div>
+    </div>
+
+    <script>
+        // ========== 1. SCROLL SUAVE NO MENU ==========
+        document.querySelectorAll('.menu a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if(target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // ========== 2. BOTÃO DE DICA NA HOME ==========
+        const btnDica = document.getElementById('btn-dica');
+        const dicaMsg = document.getElementById('dica-mensagem');
+        btnDica.addEventListener('click', () => {
+            dicaMsg.textContent = '🌱 Pequenas atitudes contam: recicle, economize água e plante uma árvore!';
+            dicaMsg.classList.remove('hidden');
+        });
+
+        // ========== 3. REVELAR VERDADE SOBRE MITOS ==========
+        document.querySelectorAll('.btn-verdade').forEach((botao) => {
+            botao.addEventListener('click', function() {
+                const verdade = this.previousElementSibling;
+                verdade.classList.toggle('hidden');
+                this.textContent = verdade.classList.contains('hidden') ? 'Mostrar verdade' : 'Esconder verdade';
+            });
+        });
+
+        // ========== 4. SIMULADOR DE PEGADA DE CARBONO ==========
+        const sliderPecuaria = document.getElementById('slider-pecuaria');
+        const sliderAgricultura = document.getElementById('slider-agricultura');
+        const btnCalcular = document.getElementById('btn-calcular');
+        const resultadoPegada = document.getElementById('resultado-pegada');
+
+        btnCalcular.addEventListener('click', () => {
+            const valorPecuaria = parseFloat(sliderPecuaria.value);
+            const valorAgricultura = parseFloat(sliderAgricultura.value);
+            
+            document.getElementById('val2').textContent = (valorPecuaria * 0.5).toFixed(2);
+            document.getElementById('val6').textContent = (valorPecuaria * 0.3).toFixed(2);
+            document.getElementById('val9').textContent = (valorAgricultura * 0.2).toFixed(2);
+            
+            let total = valorPecuaria * 0.5 + valorPecuaria * 0.3 + valorAgricultura * 0.2;
+            document.getElementById('total').textContent = total.toFixed(2);
+            
+            resultadoPegada.textContent = `🌍 Pegada simulada: ${total.toFixed(2)} ton CO₂ equivalente.`;
+        });
+
+        // ========== 5. MODAL COM INFORMAÇÕES DE ONGS ==========
+        const ongCards = document.querySelectorAll('.ong-card');
+        const modal = document.getElementById('modal');
+        const modalTexto = document.getElementById('modal-texto');
+        const fecharModal = document.querySelector('.fechar');
+
+        ongCards.forEach(card => {
+            card.addEventListener('click', () => {
+                modalTexto.textContent = card.getAttribute('data-info');
+                modal.classList.remove('hidden');
+            });
+        });
+
+        fecharModal.addEventListener('click', () => {
+            modal.classList.add('hidden');
+        });
+
+        window.addEventListener('click', (e) => {
+            if(e.target === modal) {
+                modal.classList.add('hidden');
+            }
+        });
+
+        // ========== 6. FRASES ALEATÓRIAS ==========
+        const frases = [
+            '"Desenvolvimento sustentável... é a única via viável para um futuro mais seguro e esperançoso." – Maurice Strong',
+            '"A agroecologia busca a harmonia entre produção, biodiversidade e bem-estar." – Vandana Shiva',
+            '"Não precisa destruir pra gente crescer." – Frase popular',
+            '"Sustentabilidade é toda ação destinada a manter as condições que sustentam todos os seres." – Leonardo Boff',
+            '"O melhor momento para plantar uma árvore foi há 20 anos. O segundo melhor é agora." – Provérbio chinês',
+            '"Não temos um Planeta B." – Slogan ambiental'
+        ];
+
+        const btnFrase = document.getElementById('btn-frase');
+        const fraseExibida = document.getElementById('frase-exibida');
+
+        btnFrase.addEventListener('click', () => {
+            const randomIndex = Math.floor(Math.random() * frases.length);
+            fraseExibida.textContent = frases[randomIndex];
+        });
+
+        // ========== 7. QUIZ SUSTENTÁVEL ==========
+        const perguntas = [
+            {
+                pergunta: "Qual prática ajuda a recuperar solos degradados?",
+                opcoes: ["ILPF", "Desmatamento", "Uso excessivo de agrotóxicos", "Queimadas"],
+                correta: 0
+            },
+            {
+                pergunta: "O que significa a sigla ILPF?",
+                opcoes: ["Integração Lavoura-Pecuária-Floresta", "Instituto Livre de Proteção Florestal", "Índice de Lixo Plástico Flutuante", "Inovação e Lucro para o Futuro"],
+                correta: 0
+            }
+        ];
+
+        let perguntaAtual = 0;
+        let pontuacao = 0;
+        const perguntaDiv = document.getElementById('pergunta');
+        const respostasDiv = document.getElementById('respostas');
+        const btnProxima = document.getElementById('btn-proxima');
+        const pontuacaoP = document.getElementById('pontuacao');
+
+        function carregarPergunta() {
+            if(perguntaAtual < perguntas.length) {
+                const p = perguntas[perguntaAtual];
+                perguntaDiv.textContent = p.pergunta;
+                respostasDiv.innerHTML = '';
+                p.opcoes.forEach((opcao, index) => {
+                    const btn = document.createElement('button');
+                    btn.textContent = opcao;
+                    btn.classList.add('btn');
+                    btn.style.margin = '0.5rem';
+                    btn.addEventListener('click', () => {
+                        if(index === p.correta) {
+                            pontuacao += 10;
+                            alert('✅ Correto!');
+                        } else {
+                            alert('❌ Errado! A resposta correta era: ' + p.opcoes[p.correta]);
+                        }
+                        pontuacaoP.textContent = `Pontuação: ${pontuacao}`;
+                        perguntaAtual++;
+                        carregarPergunta();
+                    });
+                    respostasDiv.appendChild(btn);
+                });
+                btnProxima.classList.add('hidden');
+            } else {
+                perguntaDiv.textContent = 'Fim do quiz! Parabéns!';
+                respostasDiv.innerHTML = '';
+                btnProxima.classList.remove('hidden');
+            }
+        }
+
+        btnProxima.addEventListener('click', () => {
+            perguntaAtual = 0;
+            pontuacao = 0;
+            pontuacaoP.textContent = '';
+            carregarPergunta();
+        });
+
+        carregarPergunta();
+
+        // ========== 8. MUDAR COR DE FUNDO DOS PILARES AO CLICAR ==========
+        const pilares = document.querySelectorAll('.pilar');
+        pilares.forEach(pilar => {
+            pilar.addEventListener('click', function() {
+                this.style.backgroundColor = '#9EC6F3';
+                setTimeout(() => {
+                    this.style.backgroundColor = '';
+                }, 1000);
+            });
+        });
+
+        // ========== EXTRA: BOTÃO QUE MOSTRA DATA ATUAL ==========
+        const dataFooter = document.createElement('p');
+        dataFooter.style.textAlign = 'center';
+        dataFooter.style.padding = '1rem';
+        dataFooter.style.backgroundColor = '#674636';
+        dataFooter.style.color = '#FFF2C6';
+        dataFooter.textContent = `Hoje é ${new Date().toLocaleDateString('pt-BR')} - Cuide do planeta todos os dias!`;
+        document.body.appendChild(dataFooter);
+    </script>
+</body>
+</html>

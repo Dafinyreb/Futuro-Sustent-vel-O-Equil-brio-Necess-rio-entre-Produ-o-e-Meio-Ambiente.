@@ -1,0 +1,247 @@
+/* ========== RESET E ESTILOS GERAIS ========== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Quicksand', sans-serif;
+    background-color: #FFF8DE; /* cor de fundo suave */
+    color: #4B2E2B; /* cor para textos principais */
+    line-height: 1.6;
+    scroll-behavior: smooth;
+}
+
+/* ========== MENU ========== */
+.menu {
+    background-color: #674636; /* marrom escuro */
+    padding: 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.menu ul {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    list-style: none;
+    gap: 1.5rem;
+}
+
+.menu a {
+    color: #FFF2C6; /* creme */
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    transition: background 0.3s, color 0.3s;
+    border-radius: 20px;
+}
+
+.menu a:hover {
+    background-color: #8C5A3C; /* marrom médio */
+    color: #FFF8DE;
+}
+
+/* ========== SEÇÕES ========== */
+.section {
+    padding: 4rem 1rem;
+    border-bottom: 2px solid #BDDDE4; /* azul clarinho */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+h1, h2, h3 {
+    color: #4B2E2B;
+    margin-bottom: 1rem;
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: #8CA9FF; /* azul médio */
+}
+
+h2 {
+    font-size: 2rem;
+    border-left: 8px solid #AAC4F5;
+    padding-left: 1rem;
+}
+
+/* ========== BOTÕES ========== */
+.btn {
+    background-color: #9EC6F3;
+    color: #4B2E2B;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.2s;
+    margin: 1rem 0;
+    font-size: 1rem;
+}
+
+.btn:hover {
+    background-color: #8CA9FF;
+    transform: scale(1.05);
+}
+
+/* ========== CARDS (MITOS) ========== */
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+    margin: 2rem 0;
+}
+
+.card {
+    background-color: #FFF2C6;
+    border-radius: 15px;
+    padding: 1.5rem;
+    flex: 1 1 250px;
+    box-shadow: 0 5px 15px rgba(103, 70, 54, 0.2);
+    border: 2px solid #AAB396;
+}
+
+.card h4 {
+    color: #674636;
+}
+
+.verdade {
+    background-color: #BDDDE4;
+    padding: 1rem;
+    border-radius: 10px;
+    margin: 1rem 0;
+}
+
+.hidden {
+    display: none;
+}
+
+/* ========== TABELA INTERATIVA ========== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #FFF2C6;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 2rem 0;
+}
+
+th, td {
+    padding: 0.8rem;
+    text-align: left;
+    border-bottom: 1px solid #AAB396;
+}
+
+th {
+    background-color: #8CA9FF;
+    color: #4B2E2B;
+}
+
+/* ========== TRIPÉ DA SUSTENTABILIDADE ========== */
+.tripe {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    margin: 3rem 0;
+}
+
+.pilar {
+    flex: 1 1 200px;
+    background-color: #AAC4F5;
+    padding: 2rem 1rem;
+    border-radius: 20px;
+    text-align: center;
+    color: #4B2E2B;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.pilar:hover {
+    background-color: #8CA9FF;
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* ========== CARDS DE ONGS ========== */
+.ongs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.ong-card {
+    background-color: #AAB396;
+    color: #FFF8DE;
+    padding: 1rem;
+    border-radius: 10px;
+    flex: 1 1 200px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.ong-card:hover {
+    background-color: #8C5A3C;
+}
+
+/* ========== MODAL ========== */
+.modal {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+}
+
+.modal-content {
+    background-color: #FFF8DE;
+    padding: 2rem;
+    border-radius: 20px;
+    max-width: 500px;
+    width: 90%;
+    position: relative;
+    color: #4B2E2B;
+}
+
+.fechar {
+    position: absolute;
+    top: 10px; right: 20px;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #674636;
+}
+
+/* ========== IMAGENS ========== */
+.img-responsive {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 1rem auto;
+    border-radius: 10px;
+}
+
+.pequeno {
+    max-width: 200px;
+}
+
+/* ========== RESPONSIVIDADE ========== */
+@media (max-width: 768px) {
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.5rem; }
+    .menu ul { gap: 0.8rem; }
+    .menu a { padding: 0.3rem 0.8rem; font-size: 0.9rem; }
+    .tripe { flex-direction: column; }
+    .pilar { width: 100%; }
+}
